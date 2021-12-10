@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"os"
 
-	"building-go-microservices/handlers"
+	"github.com/nicholasjackson/building-microservices-youtube/product-api/handlers"
 )
 
 func main() {
