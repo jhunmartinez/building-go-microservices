@@ -4,14 +4,14 @@ import "time"
 
 // Product defines the structure for an API product
 type Product struct {
-	ID          int
-	Name        string
-	Description string
-	Price       float32
-	SKU         string
-	CreatedOn   string
-	UpdatedOn   string
-	DeletedOn   string
+	ID          int     `json:"id"`
+	Name        string  `json:"name"`
+	Description string  `json:"description"`
+	Price       float32 `json:"price"`
+	SKU         string  `json:"-"`
+	CreatedOn   string  `json:"-"`
+	UpdatedOn   string  `json:"-"`
+	DeletedOn   string  `json:"-"`
 }
 
 // add method to product package that will be our data access model

@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/PacktPublishing/Building-Microservices-with-Go-Second-Edition/product-api/7_Gorilla/data"
+	"github.com/nicholasjackson/building-microservices-youtube/product-api/data"
 )
 
 type Products struct {
