@@ -14,6 +14,13 @@ type Product struct {
 	DeletedOn   string
 }
 
+// add method to product package that will be our data access model
+// database, fixed list or model. Put into func on data object
+
+func GetProducts() []*Product {
+	return productList
+}
+
 var productList = []*Product{
 	&Product{
 		ID:          1,

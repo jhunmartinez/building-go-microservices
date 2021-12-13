@@ -17,13 +17,15 @@ func main() {
 	l := log.New(os.Stdout, "product-api", log.LstdFlags)
 
 	// create reference to the handler
-	hh := handlers.NewHello(l)
-	gh := handlers.NewGoodbye(l)
+	// hh := handlers.NewHello(l)
+	// gh := handlers.NewGoodbye(l)
+	ph := handlers.NewProducts(l)
 
 	// create a new ServeMux now register handler hh to a server
 	sm := http.NewServeMux()
-	sm.Handle("/", hh)
-	sm.Handle("/goodbye", gh)
+	// sm.Handle("/", hh)
+	// sm.Handle("/goodbye", gh)
+	sm.Handle("/", ph)
 
 	// in depth server, create a new server
 	s := &http.Server{
