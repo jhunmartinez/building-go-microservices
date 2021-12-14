@@ -1,6 +1,10 @@
 package handlers
 
-import "time"
+import (
+	"encoding/json"
+	"io"
+	"time"
+)
 
 // Product defines the structure for an API product
 type Product struct {
@@ -17,7 +21,16 @@ type Product struct {
 // add method to product package that will be our data access model
 // database, fixed list or model. Put into func on data object
 
-func GetProducts() []*Product {
+// rather than returning a slice of product, we can define a type
+type Products []*Product
+
+// can add encapsulation for JSON to these handy methods
+func (p *Products) ToJSON(w io.Writer) error {
+	e := json.NewEncoder(w)
+	return e.Encode(p)
+}
+
+func GetProducts() Products {
 	return productList
 }
 
