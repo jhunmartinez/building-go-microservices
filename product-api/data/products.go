@@ -40,6 +40,19 @@ func (p *Products) Validate() error {
 
 }
 
+func validateSKU(fl validator.FieldLevel) bool {
+
+	// sku is of format abc-absd-dfsdf
+	re := regexp.MustComple(`[a-z]+[a-z]+-[a-z]+`)
+	matches := re.FindAllString(fl.Field().String(), -1)
+
+	if len(matches) != 1 {
+		return false
+	}
+
+	return true
+}
+
 // GetProducts returns a list of products
 func GetProducts() Products {
 	return productList
