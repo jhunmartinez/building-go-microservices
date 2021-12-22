@@ -1,3 +1,17 @@
+// Package Classification of Product API
+//
+// Doucmentation for Product API
+//
+// Schemas: http
+// BasePath: /
+// Version : 1.0.0
+//
+// Consumes:
+// - application/json
+// Produces:
+// - application/json
+// swagger meta
+
 package handlers
 
 import (
@@ -75,6 +89,16 @@ func (p Products) MiddlewareValidateProduct(next http.Handler) http.Handler {
 		if err != nil {
 			p.l.Println("[ERROR] deserializing product", err)
 			http.Error(rw, "Error reading product", http.StatusBadRequest)
+			return
+		}
+
+		err := prod.Validate()
+		if err != nil {
+			p.l.Println("[ERROR] validating product", err)
+			http.Error(
+				rw,
+				fmt.Sprintf("Error validating product: %s", err),
+				http.StatusBadRequest)
 			return
 		}
 

@@ -34,7 +34,7 @@ func (p *Products) ToJSON(w io.Writer) error {
 
 func (p *Products) Validate() error {
 	validate := validator.New()
-	validate.RegisterValidation()
+	validate.RegisterValidation("sku", validateSKU)
 
 	return validate.Struct(p)
 
